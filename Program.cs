@@ -25,7 +25,17 @@ namespace ConsoleApplication
             logger.LogWarning(eventId,"并发量接近上线({maximum})",200);
             logger.LogError(eventId,"数据库连接失败(数据库:{Database},用户名:{User})","TestDb","sa");
 
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("----------2016年12月26日-----------------------");
+            ILogger logger2=new ServiceCollection().AddLogging()
+            .BuildServiceProvider().GetService<ILoggerFactory>()
+            .AddConsole(true)
+            .CreateLogger("Ordering");
+            //上下文关联输出日志
+            using(logger2.BeginScope("订单:{ID}","20160520001"))
+            {
+                logger2.LogWarning("商品库存不足(商品ID:{0},当前库存:{1},订购数量:{2})","9787121237812",20,50);
+                logger2.LogError("商品ID录入错误(商品ID:{0})","9787121235368");
+            }
         }
     }
 }
