@@ -1,7 +1,6 @@
 {
     "version": "0.2.0",
     "configurations": [
-        
         {
             "name": ".NET Core Launch (console)",
             "type": "coreclr",
@@ -42,6 +41,12 @@
             "sourceFileMap": {
                 "/Views": "${workspaceRoot}/Views"
             }
+            "program": "${workspaceRoot}/bin/Debug/netcoreapp1.0/netcore.dll",
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "externalConsole": false,
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
         },
         {
             "name": ".NET Core Attach",

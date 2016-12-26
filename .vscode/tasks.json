@@ -1,6 +1,9 @@
 {
+<<<<<<< HEAD
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
+=======
+>>>>>>> e41b506a894cb1aa2e80a8659cd33884239ebfb7
     "version": "0.1.0",
     "command": "dotnet",
     "isShellCommand": true,
@@ -8,9 +11,16 @@
     "tasks": [
         {
             "taskName": "build",
+<<<<<<< HEAD
             "args": [ ],
             "isBuildCommand": true,
             "showOutput": "silent",
+=======
+            "args": [
+                "${workspaceRoot}/project.json"
+            ],
+            "isBuildCommand": true,
+>>>>>>> e41b506a894cb1aa2e80a8659cd33884239ebfb7
             "problemMatcher": "$msCompile"
         }
     ]
