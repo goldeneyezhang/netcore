@@ -24,7 +24,7 @@ namespace ConsoleApplication
             int eventId=3721;
 
             logger.LogInformation(eventId,"升级到最新.Net Core版本({version})","1.0.0");
-            logger.LogWarning(eventId,"并发量接近上线({maximum})",200);
+            logger.LogWarning(eventId,"并发量接近上限({maximum})",200);
             logger.LogError(eventId,"数据库连接失败(数据库:{Database},用户名:{User})","TestDb","sa");
 
             Console.WriteLine("----------2016年12月26日-----------------------");
@@ -43,15 +43,22 @@ namespace ConsoleApplication
             IConfiguration settings=new ConfigurationBuilder().AddJsonFile("logging.json").Build();
             ILogger logger3=new ServiceCollection().AddLogging().BuildServiceProvider().GetService<ILoggerFactory>().AddConsole(settings).CreateLogger("App");
              logger3.LogInformation(eventId,"升级到最新.Net Core版本({version})","1.0.0");
-            logger3.LogWarning(eventId,"并发量接近上线({maximum})",200);
+            logger3.LogWarning(eventId,"并发量接近上限({maximum})",200);
             logger3.LogError(eventId,"数据库连接失败(数据库:{Database},用户名:{User})","TestDb","sa");
              Console.WriteLine("Trace Source");
              TraceSource traceSource =new TraceSource(nameof(Program),SourceLevels.Warning);
              traceSource.Listeners.Add(new ConsoleTraceListener());
               traceSource.TraceEvent(TraceEventType.Information,eventId,"升级到最新.Net Core版本({0})","1.0.0");
-            traceSource.TraceEvent(TraceEventType.Warning,eventId,"并发量接近上线({0})",200);
+            traceSource.TraceEvent(TraceEventType.Warning,eventId,"并发量接近上限({0})",200);
             traceSource.TraceEvent(TraceEventType.Error,eventId,"数据库连接失败(数据库:{0},用户名:{0})","TestDb","sa");
+            Console.WriteLine("Trace Source Logger Provider");
+            ILogger logger4=new ServiceCollection().AddLogging().BuildServiceProvider().GetService<ILoggerFactory>()
+            .AddTraceSource(new SourceSwitch(nameof(Program),"Warning"),new ConsoleTraceListener())
+            .CreateLogger<Program>();
 
+              logger4.LogInformation(eventId,"升级到最新.Net Core版本({version})","1.0.0");
+            logger4.LogWarning(eventId,"并发量接近上限({maximum})",200);
+            logger4.LogError(eventId,"数据库连接失败(数据库:{Database},用户名:{User})","TestDb","sa");
         }
     }
 }

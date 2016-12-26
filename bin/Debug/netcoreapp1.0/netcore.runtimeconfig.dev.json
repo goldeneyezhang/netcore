@@ -1,7 +1,7 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/home/zhangyibo/.nuget/packages"
+      "C:\\Users\\golde\\.nuget\\packages"
     ]
   }
 }
