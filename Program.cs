@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Extensions.Logging.Debug;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using System.Diagnostics;
 namespace ConsoleApplication
 {
     public class Program
@@ -44,6 +45,13 @@ namespace ConsoleApplication
              logger3.LogInformation(eventId,"升级到最新.Net Core版本({version})","1.0.0");
             logger3.LogWarning(eventId,"并发量接近上线({maximum})",200);
             logger3.LogError(eventId,"数据库连接失败(数据库:{Database},用户名:{User})","TestDb","sa");
+             Console.WriteLine("Trace Source");
+             TraceSource traceSource =new TraceSource(nameof(Program),SourceLevels.Warning);
+             traceSource.Listeners.Add(new ConsoleTraceListener());
+              traceSource.TraceEvent(TraceEventType.Information,eventId,"升级到最新.Net Core版本({0})","1.0.0");
+            traceSource.TraceEvent(TraceEventType.Warning,eventId,"并发量接近上线({0})",200);
+            traceSource.TraceEvent(TraceEventType.Error,eventId,"数据库连接失败(数据库:{0},用户名:{0})","TestDb","sa");
+
         }
     }
 }
