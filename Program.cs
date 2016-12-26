@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging.Console;
 using System.Text;
 using Microsoft.Extensions.Logging.Debug;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 namespace ConsoleApplication
 {
     public class Program
@@ -36,6 +37,13 @@ namespace ConsoleApplication
                 logger2.LogWarning("商品库存不足(商品ID:{0},当前库存:{1},订购数量:{2})","9787121237812",20,50);
                 logger2.LogError("商品ID录入错误(商品ID:{0})","9787121235368");
             }
+            //AddConsole的扩展方法
+            Console.WriteLine("根据定义在logging.json文件中的日志配置，只有等级不低于Warning的日志才会真正被输出到控制台上");
+            IConfiguration settings=new ConfigurationBuilder().AddJsonFile("logging.json").Build();
+            ILogger logger3=new ServiceCollection().AddLogging().BuildServiceProvider().GetService<ILoggerFactory>().AddConsole(settings).CreateLogger("App");
+             logger3.LogInformation(eventId,"升级到最新.Net Core版本({version})","1.0.0");
+            logger3.LogWarning(eventId,"并发量接近上线({maximum})",200);
+            logger3.LogError(eventId,"数据库连接失败(数据库:{Database},用户名:{User})","TestDb","sa");
         }
     }
 }
