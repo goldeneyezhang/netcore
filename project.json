@@ -2,7 +2,8 @@
   "version": "1.0.0-*",
   "buildOptions": {
     "debugType": "portable",
-    "emitEntryPoint": true
+    "emitEntryPoint": true,
+    "copyToOutput":"logging.json"
   },
   "dependencies": {},
   "frameworks": {
@@ -10,13 +11,15 @@
       "dependencies": {
         "Microsoft.NETCore.App": {
           "type": "platform",
-          "version": "1.1.0"
+          "version": "1.0.3"
         },
         "Microsoft.Extensions.DependencyInjection": "1.0.0",
         "Microsoft.Extensions.Logging":"1.0.0",
         "Microsoft.Extensions.Logging.Console":"1.0.0",
          "Microsoft.Extensions.Logging.Debug":"1.0.0",
-         "System.Text.Encoding.CodePages":"4.0.1"
+         "System.Text.Encoding.CodePages":"4.0.1",
+         "Microsoft.Extensions.Configuration.Json":"1.0.0",
+         "System.Diagnostics.TraceSource": "4.0.0"
       },
       "imports": "dnxcore50"
     }
