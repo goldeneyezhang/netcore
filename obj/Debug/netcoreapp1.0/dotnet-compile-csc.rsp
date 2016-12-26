@@ -7,8 +7,8 @@
 -debug:portable
 -nostdlib
 -nologo
-"E:\netcore\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
--out:"E:\netcore\bin\Debug\netcoreapp1.0\netcore.dll"
+"e:\netcore\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
+-out:"e:\netcore\bin\Debug\netcoreapp1.0\netcore.dll"
 -r:"C:\Users\golde\.nuget\packages\Microsoft.CSharp\4.0.1\ref\netstandard1.0\Microsoft.CSharp.dll"
 -r:"C:\Users\golde\.nuget\packages\Microsoft.Extensions.Configuration.Abstractions\1.0.0\lib\netstandard1.0\Microsoft.Extensions.Configuration.Abstractions.dll"
 -r:"C:\Users\golde\.nuget\packages\Microsoft.Extensions.DependencyInjection\1.0.0\lib\netstandard1.1\Microsoft.Extensions.DependencyInjection.dll"
@@ -91,4 +91,4 @@
 -r:"C:\Users\golde\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll"
 -r:"C:\Users\golde\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll"
 -r:"C:\Users\golde\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll"
-"E:\netcore\Program.cs"
+"e:\netcore\Program.cs"
