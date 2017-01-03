@@ -6,6 +6,10 @@ using Microsoft.Extensions.Logging.Debug;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Builder;
+using System.IO;
+using Microsoft.AspNetCore.StaticFiles;
 namespace ConsoleApplication
 {
     public class Program
@@ -59,6 +63,9 @@ namespace ConsoleApplication
               logger4.LogInformation(eventId,"升级到最新.Net Core版本({version})","1.0.0");
             logger4.LogWarning(eventId,"并发量接近上限({maximum})",200);
             logger4.LogError(eventId,"数据库连接失败(数据库:{Database},用户名:{User})","TestDb","sa");
+            //以Web的形式读取文件
+            new WebHostBuilder(). UseContentRoot(Directory.GetCurrentDirectory())
+             .UseKestrel() .Configure(app => app.UseStaticFiles()) .Build() .Run();
         }
     }
 }
