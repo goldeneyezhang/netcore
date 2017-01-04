@@ -66,13 +66,13 @@ namespace ConsoleApplication
             logger4.LogError(eventId,"数据库连接失败(数据库:{Database},用户名:{User})","TestDb","sa");
             //以Web的形式读取文件
             string contentRoot = Directory.GetCurrentDirectory();
-            new WebHostBuilder(). UseContentRoot(contentRoot)
-             .UseKestrel() .Configure(app => app.UseStaticFiles()
-             .UseStaticFiles(new StaticFileOptions{
-                 FileProvider=new PhysicalFileProvider(Path.Combine(contentRoot,"doc")),
-                   RequestPath = "/documents"
-             }))
-              .Build() .Run();
+        IFileProvider fileProvider = new PhysicalFileProvider(Path.Combine(contentRoot, "doc"));
+         new WebHostBuilder()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseKestrel()
+                .UseStartup<Startup>()
+                .Build()
+                .Run();
         }
     }
 }
