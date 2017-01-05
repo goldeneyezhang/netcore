@@ -9,12 +9,14 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
 using System.IO;
-using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Routing;
 namespace ConsoleApplication
 {
+    
     public class Program
     {
+      
         public static void Main(string[] args)
         {
             //注册EncodingProvider实现对中文编码的支持
@@ -67,12 +69,15 @@ namespace ConsoleApplication
             //以Web的形式读取文件
             string contentRoot = Directory.GetCurrentDirectory();
         IFileProvider fileProvider = new PhysicalFileProvider(Path.Combine(contentRoot, "doc"));
-         new WebHostBuilder()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseKestrel()
-                .UseStartup<Startup>()
-                .Build()
-                .Run();
+         //new WebHostBuilder()
+                //.UseContentRoot(Directory.GetCurrentDirectory())
+               // .UseKestrel()
+               // .UseStartup<Startup>()
+                //.Build()
+                //.Run();
+                new WebHostBuilder().UseKestrel().ConfigureServices(svcs => svcs.AddRouting())
+                .UseStartup<Startup>().Build().Run();
         }
+        
     }
 }
