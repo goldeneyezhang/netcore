@@ -16,7 +16,7 @@ namespace ConsoleApplication
         {
              string contentRoot = Directory.GetCurrentDirectory();
                 IFileProvider fileProvider = new PhysicalFileProvider(Path.Combine(contentRoot, "doc"));
-            app.UseFileServer(enableDirectoryBrowsing: true) .
+            app.UseFileServer(enableDirectoryBrowsing: true).
             UseDefaultFiles().
               UseDefaultFiles(new DefaultFilesOptions
             {
