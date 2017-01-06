@@ -52,8 +52,8 @@ namespace ConsoleApplication
             int days=int.Parse(context.GetRouteData().Values["days"].ToString());
             WeatherReport report=new WeatherReport(city,days);
             context.Response.ContentType="text/html";
-            await context.Response.WriteAsync("<html><head><title>Weather</title> <meta charste='gb2312'></head></body>");
-            await context.Response.WriteAsync("<h3>{city}</h3>");
+            await context.Response.WriteAsync("<html><head><meta charset='UTF-8'><title>Weather</title></head></body>");
+            await context.Response.WriteAsync($"<h3>{city}</h3>");
             foreach(var it in report.WeatherInfos)
             {
                 await context.Response.WriteAsync($"{it.Key.ToString("yyyy-MM-dd")}:");
